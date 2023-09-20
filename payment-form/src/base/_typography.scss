@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+/// Header styles. Common styles collected in main class. (For example `.header`) More specific classes should be place inner class section.
+/// @group Fonts
+///
+.header {
+  font-family: Roboto;
+  font-style: normal;
+
+  &_bold {
+    /* header/&-bold */
+    @extend .header;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 150%; /* 3rem */
+  }
+}
+
+/// Body styles. Common styles collected in main class. (For example `.body`) More specific classes should be place inner class section.
+/// @group Fonts
+///
+.body {
+  @extend .header;
+
+  &_regular {
+    /* body/&-regular */
+    @extend .body;
+    font-size: 1.1875rem;
+    font-weight: 400;
+  }
+
+  &_semibold {
+    /* body/&-semibold */
+    @extend .body_regular;
+    font-weight: 600;
+    line-height: normal;
+  }
+}
+
+/// Caption styles. Common styles collected in main class. (For example `.caption`) More specific classes should be place inner class section.
+/// @group Fonts
+///
+.caption {
+  @extend .header;
+
+  &_style1 {
+    /* caption/&-semibold */
+    @extend .caption;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 150%; /* 1.3125rem */
+    letter-spacing: 0.0175rem;
+  }
+
+  &_style2 {
+    /* caption/&-medium */
+    @extend .caption;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: normal;
+  }
+}
