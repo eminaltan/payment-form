@@ -18,6 +18,31 @@ const checkVal = (props) => {
 
     jsContainer.classList.add("input-container_valid");
     jsContainer.classList.remove("input-container_invalid");
+
+    /**
+     * When credit card number properly entered then credit card icon will be changed accordingly prefix
+     * card pattern.
+     *
+     * So, pattern of master card begins whether 2 or 5. If entered value start with these numbers
+     * then master card icon will be appear. Default value set to *Unknown.
+     */
+    if (props.jsContainerId == "js-credit") {
+      const inputValue = document.getElementById(`${props.id}`).value;
+
+      const inputValueOfFirstLetter = Array.from(inputValue[0]);
+
+      inputValueOfFirstLetter == 2 || inputValueOfFirstLetter == 5
+        ? jsContainer.style.setProperty(
+            "--js-credit-card",
+            "url('https://api.iconify.design/logos/mastercard.svg?width=41&height=32')"
+          )
+        : inputValueOfFirstLetter == 3 || inputValueOfFirstLetter == 4
+        ? jsContainer.style.setProperty(
+            "--js-credit-card",
+            "url('https://api.iconify.design/ri/visa-fill.svg?color=%233d5a99&width=32&height=32')"
+          )
+        : jsContainer.style.setProperty("--js-credit-card", "'*Unknown'");
+    }
   };
 
   /** If <input> element values not matches pattern attr. */

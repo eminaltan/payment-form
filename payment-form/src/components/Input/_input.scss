@@ -6,6 +6,9 @@
 
   /* Used for .input-container :before pseudo-class */
   --js-display-b: none;
+
+  /** For credit-card icon, default value is Unknown */
+  --js-credit-card: "*Unknown";
 }
 .input-container {
   position: relative;
@@ -69,6 +72,10 @@
   &::before {
     display: var(--js-display-b);
     content: url("https://api.iconify.design/icon-park-solid/success.svg?color=%2300b934&width=28");
+  }
+
+  &[id="js-credit"]::before {
+    content: var(--js-credit-card);
   }
 
   &:hover {
