@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import "./_app.scss";
+import Input from "./components/Input/Input";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="page">
+      <div className="page__boxes">
+        <h2>Personal Information</h2>
+        <Input type="name" />
+        <Input type="email" />
+        <Input type="phone" />
+      </div>
+
+      <div className="page__boxes">
+        <h2>Billing & Shipment Information</h2>
+        <Input type="credit-card" />
+        <Input type="cvv" />
+        <Input type="expiry-date" />
+        <Input type="shipment" />
+      </div>
     </div>
   );
 }

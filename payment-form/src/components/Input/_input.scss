@@ -1,0 +1,117 @@
+@use "../../base/typography" as *;
+
+:root {
+  /* Used for .input-container :after pseudo-class */
+  --js-display-a: none;
+
+  /* Used for .input-container :before pseudo-class */
+  --js-display-b: none;
+
+  /** For credit-card icon, default value is Unknown */
+  --js-credit-card: "*Unknown";
+}
+.input-container {
+  position: relative;
+  display: flex;
+  width: 16.375rem;
+  padding: 0 var(--gap-xs, 0.625rem);
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--gap-xs, 0.625rem);
+  margin-bottom: var(--gap-r, 1.5625rem);
+  border-radius: var(--radius-r, 0.25rem);
+  border: 1px solid var(--colors-accent-dark-300, #949494);
+  background: var(--colors-accent-light-400, #fff);
+
+  @extend .caption_style1;
+  color: var(--colors-accent-dark-500, #2a2a2a);
+
+  &_small {
+    width: 9.6875rem;
+  }
+
+  input {
+    border: 0;
+    outline: 0;
+    @extend .body_regular;
+
+    &::placeholder {
+      color: var(--colors-accent-dark-300, #949494);
+    }
+
+    &[type="month"]::-webkit-inner-spin-button,
+    &[type="month"]::-webkit-calendar-picker-indicator {
+      display: none;
+      -webkit-appearance: none;
+    }
+  }
+
+  &__error {
+    display: none;
+    position: absolute;
+    bottom: -1.875rem;
+    width: max-content;
+    color: var(--colors-accent-error-500, #ff0733);
+
+    &_show {
+      display: block;
+    }
+  }
+
+  &:before,
+  &:after {
+    align-self: flex-end;
+    position: absolute;
+  }
+
+  &::after {
+    display: var(--js-display-a);
+    content: url("https://api.iconify.design/ph/seal-warning-fill.svg?color=%23ff0733&width=28");
+  }
+
+  &::before {
+    display: var(--js-display-b);
+    content: url("https://api.iconify.design/icon-park-solid/success.svg?color=%2300b934&width=28");
+  }
+
+  &[id="js-credit"]::before {
+    content: var(--js-credit-card);
+  }
+
+  &:hover {
+    border-color: var(--colors-accent-dark-500, #2a2a2a);
+    color: var(--colors-accent-dark-300, #949494);
+
+    input::placeholder {
+      color: var(--colors-accent-dark-500, #2a2a2a);
+      width: 100vw;
+    }
+  }
+
+  &:focus-within {
+    border-color: var(--colors-accent-focus-400, #0079be);
+    color: var(--colors-accent-focus-300, #038bd8);
+
+    input {
+      color: var(--colors-accent-focus-500, #005d91);
+    }
+  }
+
+  &_invalid {
+    border-color: var(--colors-accent-error-400, #f53b5d) !important;
+    color: var(--colors-accent-error-400, #f53b5d) !important;
+
+    input {
+      color: var(--colors-accent-error-500, #ff0733);
+    }
+  }
+
+  &_valid {
+    border-color: var(--colors-accent-success-400, #00b934) !important;
+    color: var(--colors-accent-success-400, #00b934) !important;
+
+    input {
+      color: var(--colors-accent-success-500, #1e8a3c) !important;
+    }
+  }
+}
