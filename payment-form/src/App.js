@@ -2,6 +2,10 @@ import "./_app.scss";
 import Input from "./components/Input/Input";
 
 function App() {
+  const jsCheckBox = document
+    .getElementById("js-checkbox")
+    .setAttribute("disabled", "");
+
   return (
     <div className="page">
       <div className="page__boxes">
@@ -18,6 +22,14 @@ function App() {
         <Input type="expiry-date" />
         <Input type="shipment" />
       </div>
+
+      <label>
+        Checkbox
+        <input
+          type="checkbox"
+          id="js-checkbox"
+        />
+      </label>
     </div>
   );
 }
